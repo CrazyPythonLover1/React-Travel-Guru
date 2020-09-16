@@ -19,7 +19,7 @@
     display: flex;
     justify-content: space-between;
     position: relative;
-    margin: 2rem 0 5rem 5rem;
+    margin: 10rem 0 5rem 5rem;
 }
 .trip__option .trip__info{
     width: 450px;
@@ -51,12 +51,27 @@
     display:flex;
     margin-right: -3rem;
 }
-
-.trip__img >img{
-    background:cover;
+.trip__img .img{
+    position: relative;
+    
+}
+.trip__img .img >img {
     width: 12.875rem;
     height: 22rem;
     margin: 10px;
     border-radius: 20px;
-
 }
+
+
+
+.trip__img .img > h3{
+    color: white;
+    position: absolute;
+    bottom: 40px;
+    left: 1rem;
+    background-color: #00000067;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+

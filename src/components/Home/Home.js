@@ -30,9 +30,19 @@ const Home = () => {
                     <div className="button"> <p>booking</p> <ArrowRightAltIcon/> </div>
                 </div>
                 <div className="trip__img">
-                    <img onClick={()=>handleTrip(1)} src={trip1} alt=""/>
-                    <img onClick={()=>handleTrip(2)} src={trip2} alt=""/>
-                    <img onClick={()=>handleTrip(3)} src={trip3} alt=""/>
+                    <div className="img">
+                        <img onClick={()=>handleTrip(1)} src={trip1} alt=""/>
+                        <h3> COX'S BAZAR </h3>
+                    </div>
+                    <div className="img">
+                        <img onClick={()=>handleTrip(2)} src={trip2} alt=""/>
+                        <h3> SREEMANGAL</h3>
+                    </div>
+                    <div className="img">
+                        <img onClick={()=>handleTrip(3)} src={trip3} alt=""/>
+                        <h3> SUNDARBAN </h3>
+                    </div>
+                    
                 </div>
             </div>
         
