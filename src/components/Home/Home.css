@@ -98,11 +98,11 @@
     }
 
     .home{
-        height: 120vh;
+        height: 130vh;
     }
     
     .home::before{
-        height: 122%;
+        height: 130%;
         width: 100%;
       }
       .trip__option .trip__info{
