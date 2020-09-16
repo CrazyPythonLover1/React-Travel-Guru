@@ -2,12 +2,57 @@
     margin: 2rem 5rem;
     background-color: white;
     padding:2rem 1.2rem;
+    border-radius: 5px;
+    height:22rem;
 }
 
-.book__details>label{
+.book__details form >label{
+    color: gray;
+}
+
+.book__details form >input{
+    width: 20rem;
+    height: 2rem;
+    padding: .6rem .7rem;
+    margin:1rem 0;
+    font-weight: bold;
+    border: none;
+    outline-width: 0;
+    border-radius: 5px;
+    background: #F2F2F2;
 
 }
 
-.book__details>label{
+.book__details form >button{
+    width: 21.3rem;
+    height: 2.9rem;
+    margin:1rem 0;
+    padding: 1rem 0;
+    font-weight: bold;
+    border: none;
+    outline-width: 0;
+    border-radius: 5px;
+    background: orange;
+}
+
+.date__options{
+    display: flex;
+}
+
+.date__options label {
+    color: gray;
+}
+
+.date__option  >input{
+    width: 8.8rem;
+    height: 2rem;
+    padding: .6rem .7rem;
+    margin:1rem 10px 0 0;
+    font-weight: bold;
+    border: none;
+    outline-width: 0;
+    border-radius: 5px;
+    background: #F2F2F2;
 
 }
+
