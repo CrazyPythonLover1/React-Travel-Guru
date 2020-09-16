@@ -28,6 +28,7 @@
 
 .trip__option .trip__info >h1{
     font-size: 4rem;
+    text-transform: uppercase;
 }
 
 .trip__option .trip__info >p{
@@ -72,6 +73,41 @@
     background-color: #00000067;
     padding: 5px;
     border-radius: 5px;
+}
+
+@media screen and (max-width: 1140px){
+    .trip__img .img >img {
+        width: 10.875rem;
+        height: 20rem;
+        margin: 10px;
+        border-radius: 20px;
+    }
+}
+
+@media screen and (max-width: 1060px){
+    .trip__option{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        position: relative;
+        margin: 10rem 0 5rem 5rem;
+    }
+    .trip__img{
+        display:flex;
+        margin: 0;
+    }
+
+    .home{
+        height: 120vh;
+    }
+    
+    .home::before{
+        height: 122%;
+        width: 100%;
+      }
+      .trip__option .trip__info{
+        margin-bottom: 2rem;
+    }
 }
 
 
