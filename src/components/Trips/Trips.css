@@ -17,6 +17,7 @@
 .trip__option .trip__info >p{
     font-size: 1.5rem;
     line-height: 1.3;
+    text-align: justify;
 }
 .trip__option .trip__info > .button {
     display: flex;
