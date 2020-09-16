@@ -12,8 +12,14 @@ import ArrowRightAltIcon from '@material-ui/icons/ArrowRightAlt';
 
 const Home = () => {
     const [trips, setTrips] = useState(tripData);
-    const trip = trips.find(tp => tp.id === 1)
-    console.log(trip);
+    const [id, setId] = useState(1)
+    const trip = trips.find(tp => tp.id === id)
+
+    const handleTrip = (id) => {
+        console.log(id,"clicked");
+        setId(id);
+    }
+
     return (
         <div  className="home">
             <Header/>
@@ -24,9 +30,9 @@ const Home = () => {
                     <div className="button"> <p>booking</p> <ArrowRightAltIcon/> </div>
                 </div>
                 <div className="trip__img">
-                    <img src={trip1} alt=""/>
-                    <img src={trip2} alt=""/>
-                    <img src={trip3} alt=""/>
+                    <img onClick={()=>handleTrip(1)} src={trip1} alt=""/>
+                    <img onClick={()=>handleTrip(2)} src={trip2} alt=""/>
+                    <img onClick={()=>handleTrip(3)} src={trip3} alt=""/>
                 </div>
             </div>
         
