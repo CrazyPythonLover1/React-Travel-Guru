@@ -2,6 +2,8 @@ import React from 'react';
 import './Login.css';
 import Header from '../Header/Header';
 import { Link } from 'react-router-dom';
+import fbIcon from '../../images/Icon/fb.png';
+import gIcon from '../../images/Icon/google.png';
 
 const Login = () => {
     return (
@@ -27,6 +29,20 @@ const Login = () => {
                 <p className="login__option__forgot"> Don't have an account? <Link className="orange"> Create a new account</Link></p>
                 
             </form>
+
+            <div className="or"> <h3>or</h3> </div>
+
+            <div className="another__login_options">
+                <div className="another__login__option">
+                    <img src={fbIcon} alt=""/>
+                    <p> Continue with Facebook </p>
+                </div>
+                <div className="another__login__option">
+                    <img src={gIcon} alt=""/>
+                    <p> Continue with Google </p>
+                </div>
+            </div>
+
         </div>
     );
 };
