@@ -18,12 +18,12 @@ export const createUserWithEmailAndPassword = ( name,email, password) =>{
         verifyEmail();
         return newUserInfo;
     })
-    .catch(function(error) {
+    .catch((error) =>{
         const newUserInfo = {}
         newUserInfo.error =  error.message;
         newUserInfo.success = false;
         return newUserInfo;
-      })
+      });
 }
 
 const updateUserInfo = (name) => {
@@ -33,6 +33,7 @@ const updateUserInfo = (name) => {
     displayName: name,
     }).then(function() {
     // Update successful.
+    console.log('user name updated successfully')
     }).catch(function(error) {
     // An error happened.
     console.log(error);
@@ -54,20 +55,19 @@ const verifyEmail = () => {
 
 export const signInWithEmailAndPassword = (email, password) =>{
     return firebase.auth().signInWithEmailAndPassword(email, password)
-          .then(res=>{
-            const newUserInfo = res.user;
-              newUserInfo.error = "";
-              newUserInfo.success = true;
-              return newUserInfo;
-          })
-          .catch(function(error) {
-            // Handle Errors here.
-            const newUserInfo = {};
-            newUserInfo.error = error.message;
-            newUserInfo.success = false;
-            return newUserInfo;
-          });
-}
+    .then(res => {
+      const newUserInfo = res.user;
+      newUserInfo.error = '';
+      newUserInfo.success = true;
+      return newUserInfo;
+    })
+    .catch(function(error) {
+      const newUserInfo = {};
+      newUserInfo.error = error.message;
+      newUserInfo.success = false;
+      return newUserInfo;
+    });
+ }
 
 export const handleGoogleSignIn  = () => {
     const googleProvider = new firebase.auth.GoogleAuthProvider();

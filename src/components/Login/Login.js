@@ -4,15 +4,13 @@ import Header from '../Header/Header';
 import { Link, useHistory, useLocation } from 'react-router-dom';
 import fbIcon from '../../images/Icon/fb.png';
 import gIcon from '../../images/Icon/google.png';
-import { initializeLoginFramework, createUserWithEmailAndPassword, signInWithEmailAndPassword,handleGoogleSignIn, handleFbSignIn} from '../Login/loginManager';
+import { initializeLoginFramework, createUserWithEmailAndPassword,handleSignOut,  signInWithEmailAndPassword,handleGoogleSignIn, handleFbSignIn} from '../Login/loginManager';
 import { UserContext } from '../../App';
 
 
 
 
 const Login = () => {
-
-
     const [newUser, setNewUser] = useState(false);
     const [user, setUser] = useState({
         isSignedIn: false,
@@ -25,7 +23,7 @@ const Login = () => {
     const [loggedInUser, setLoggedInUser] = useContext(UserContext);
     const history = useHistory();
     const location = useLocation();
-    let { from } = location.state || { from: { pathname: "/booking" } };
+    let { from } = location.state || { from: { pathname: "/" } };
 
     initializeLoginFramework();
 
@@ -36,13 +34,19 @@ const Login = () => {
         })
       }
 
-      const fbSignIn = ()=> {
-        handleFbSignIn()
-        .then(res => {
-          handleResponse(res,true);
-        })
-      }
-
+    const fbSignIn = ()=> {
+    handleFbSignIn()
+    .then(res => {
+        handleResponse(res,true);
+    })
+    }
+    
+    const signOut = () => {
+    handleSignOut()
+    .then(res => {
+        handleResponse(res, false);
+    })
+}
     
 
     const handleResponse = (res,redirect) => {
