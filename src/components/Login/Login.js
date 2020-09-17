@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react';
 import './Login.css';
-import Header from '../Header/Header';
+import CommonHeader from '../CommonHeader/CommonHeader';
 import { Link, useHistory, useLocation } from 'react-router-dom';
 import fbIcon from '../../images/Icon/fb.png';
 import gIcon from '../../images/Icon/google.png';
@@ -96,7 +96,7 @@ const Login = () => {
     return (
         <div className="Login">
             <div className="header">
-                <Header/>
+                <CommonHeader/>
             </div>
             
             <form onSubmit={handleSubmit} className="form">

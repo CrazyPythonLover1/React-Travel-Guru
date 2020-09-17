@@ -6,6 +6,8 @@ import trip3 from '../../images/Image/sundorbon.png';
 import ArrowRightAltIcon from '@material-ui/icons/ArrowRightAlt';
 
 const Trips = ({handleHomepage,trip,id,handleTrip}) => {
+
+    
     const activeStyle = {
         border: '3px solid orange',
     }

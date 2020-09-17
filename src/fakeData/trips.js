@@ -11,7 +11,7 @@ const trips = [
         name: "cox's bazar",
         description: "Cox's Bazar is a city, Cox’s Bazar is a town on the southeast coast of Bangladesh. It’s known for its very long, sandy beachfront, stretching from Sea Beach in the north to Kolatoli Beach in the south. Aggameda Khyang monastery is home to bronze statues and centuries-old Buddhist manuscripts. South of town, the tropical rainforest of Himchari National Park has waterfalls and many birds. North, sea turtles breed on nearby Sonadia Island. ...",
         img: trip1,
-        hotels:{
+        hotels:[{
             id: 1,
             title: "Light bright airy stylish apt & safe peaceful stay",
             des:"Wif Air conditioning Kitchen",
@@ -19,13 +19,7 @@ const trips = [
             price: 34,
             picture:hotel1,
         },
-    },
-    {
-        id: 2,
-        name: "Sreemangal",
-        description: "Sreemangal fishing port, tourism centre and district headquarters in southeastern Bangladesh. It’s known for its very long, sandy beachfront, stretching from Sea Beach in the north to Kolatoli Beach in the south. Aggameda Khyang monastery is home to bronze statues and centuries-old Buddhist manuscripts. South of town, the tropical rainforest of Himchari National Park has waterfalls and many birds. North, sea turtles breed on nearby Sonadia Island....",
-        img: trip2,
-        hotels:{
+        {
             id: 2,
             title: "Apartment in Lost Panorama",
             des:"Wif Air conditioning Kitchen",
@@ -34,13 +28,7 @@ const trips = [
             picture: hotel2,
             
         },
-    },
-    {
-        id: 3,
-        name: "Sundarbans",
-        description: "Sundarbans fishing port, tourism centre and district headquarters in southeastern Bangladesh. It’s known for its very long, sandy beachfront, stretching from Sea Beach in the north to Kolatoli Beach in the south. Aggameda Khyang monastery is home to bronze statues and centuries-old Buddhist manuscripts. South of town, the tropical rainforest of Himchari National Park has waterfalls and many birds. North, sea turtles breed on nearby Sonadia Island....",
-        img: trip3,
-        hotels:{
+        {
             id: 3,
             title: "AR Lounge & Pool (r&r + b&b)",
             des:"Wif Air conditioning Kitchen",
@@ -48,7 +36,71 @@ const trips = [
             price: 44,
             picture: hotel3,
             
+        },]
+    },
+    {
+        id: 2,
+        name: "Sreemangal",
+        description: "Sreemangal fishing port, tourism centre and district headquarters in southeastern Bangladesh. It’s known for its very long, sandy beachfront, stretching from Sea Beach in the north to Kolatoli Beach in the south. Aggameda Khyang monastery is home to bronze statues and centuries-old Buddhist manuscripts. South of town, the tropical rainforest of Himchari National Park has waterfalls and many birds. North, sea turtles breed on nearby Sonadia Island....",
+        img: trip2,
+        hotels:[{
+            id: 1,
+            title: "Light bright airy stylish apt & safe peaceful stay",
+            des:"Wif Air conditioning Kitchen",
+            cancelation:"Cancellation fexibility availiable",
+            price: 34,
+            picture:hotel1,
         },
+        {
+            id: 2,
+            title: "Apartment in Lost Panorama",
+            des:"Wif Air conditioning Kitchen",
+            cancelation:"Cancellation fexibility availiable",
+            price: 52,
+            picture: hotel2,
+            
+        },
+        {
+            id: 3,
+            title: "AR Lounge & Pool (r&r + b&b)",
+            des:"Wif Air conditioning Kitchen",
+            cancelation:"Cancellation fexibility availiable",
+            price: 44,
+            picture: hotel3,
+            
+        },]
+    },
+    {
+        id: 3,
+        name: "Sundarbans",
+        description: "Sundarbans fishing port, tourism centre and district headquarters in southeastern Bangladesh. It’s known for its very long, sandy beachfront, stretching from Sea Beach in the north to Kolatoli Beach in the south. Aggameda Khyang monastery is home to bronze statues and centuries-old Buddhist manuscripts. South of town, the tropical rainforest of Himchari National Park has waterfalls and many birds. North, sea turtles breed on nearby Sonadia Island....",
+        img: trip3,
+        hotels:[{
+            id: 1,
+            title: "Light bright airy stylish apt & safe peaceful stay",
+            des:"Wif Air conditioning Kitchen",
+            cancelation:"Cancellation fexibility availiable",
+            price: 34,
+            picture:hotel1,
+        },
+        {
+            id: 2,
+            title: "Apartment in Lost Panorama",
+            des:"Wif Air conditioning Kitchen",
+            cancelation:"Cancellation fexibility availiable",
+            price: 52,
+            picture: hotel2,
+            
+        },
+        {
+            id: 3,
+            title: "AR Lounge & Pool (r&r + b&b)",
+            des:"Wif Air conditioning Kitchen",
+            cancelation:"Cancellation fexibility availiable",
+            price: 44,
+            picture: hotel3,
+            
+        },]
     },
 ];
 export default trips;

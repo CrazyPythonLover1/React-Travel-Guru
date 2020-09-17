@@ -1,14 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import './Home.css'
-import tripData from '../../fakeData/trips'
-import Header from '../Header/Header';
 import Trips from '../Trips/Trips';
 import TripDtail from '../TripDetail/TripDtail';
+import { UserContext } from '../../App';
+import Header from '../Header/Header';
 
 const Home = () => {
-    const [trips, setTrips] = useState(tripData);
-    const [id, setId] = useState(1)
-    const trip = trips.find(tp => tp.id === id)
+    const [loggedInUser, setLoggedInUser,trip, id, setId] = useContext(UserContext);
+
+    console.log(trip);
+    
+    
+
     const [homepage, setHomepage] = useState(true);
     const handleHomepage = ()=>{
         setHomepage(false);

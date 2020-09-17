@@ -1,6 +1,7 @@
 import React, { createContext, useState } from 'react';
 import './App.css';
 import Home from './components/Home/Home';
+import tripData from './fakeData/trips.js'
 
 import {
   BrowserRouter as Router,
@@ -13,17 +14,24 @@ import SignUp from './components/SignUp/SignUp';
 import Book from './components/Book/Book';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 
+
 export const UserContext = createContext();
 
+
 function App() {
+
+  const [trips, setTrips] = useState(tripData);
+  const [id, setId] = useState(1)
+  const trip = trips.find(tp => tp.id === id)
   const [loggedInUser, setLoggedInUser] = useState({});
   return (
-    <UserContext.Provider value={[loggedInUser, setLoggedInUser]}> 
+    <UserContext.Provider value={[loggedInUser, setLoggedInUser,trip, id, setId]}> 
       <Router>
         <Switch>
           <Route path="/home">
-            <Home/>
+            <Home trip={trip} id={id} setId={setId}/>
           </Route>
+         
           <PrivateRoute path="/booking">
             <Book/>
           </PrivateRoute>
@@ -33,6 +41,7 @@ function App() {
           <Route path="/signup">
             <SignUp/>
             </Route>
+            
           <Route exact path="/">
             <Home/>
           </Route>
