@@ -11,9 +11,9 @@ const TripDtail = ({trip}) => {
             <div className="book__details">
                 <form action="">
                     <label for="origin"> Origin</label> <br/>
-                    <input type="text" name="origin" value="Dhaka"/> <br/>
+                    <input type="text" name="origin" placeholder="Dhaka"/> <br/>
                     <label for="destination"> Destination</label>  <br/>
-                    <input type="text" name="destination" value={trip.name}/> <br/>
+                    <input type="text" name="destination" placeholder={trip.name}  /> <br/>
                     <div className="date__options">
                         <div className="date__option">
                             <label for=""> From </label> <br/>

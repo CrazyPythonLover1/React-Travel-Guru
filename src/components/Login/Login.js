@@ -1,12 +1,93 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import './Login.css';
 import Header from '../Header/Header';
-import { Link } from 'react-router-dom';
+import { Link, useHistory, useLocation } from 'react-router-dom';
 import fbIcon from '../../images/Icon/fb.png';
 import gIcon from '../../images/Icon/google.png';
-import { initializeLoginFramework } from './loginManager';
+import { initializeLoginFramework, createUserWithEmailAndPassword, signInWithEmailAndPassword,handleGoogleSignIn, handleFbSignIn} from '../Login/loginManager';
+import { UserContext } from '../../App';
+
+
+
 
 const Login = () => {
+
+
+    const [newUser, setNewUser] = useState(true);
+    const [user, setUser] = useState({
+        isSignedIn: false,
+        name: '',
+        email: '',
+        password: '',
+        photo: '',
+    });
+
+    const [loggedInUser, setLoggedInUser] = useContext(UserContext);
+    const history = useHistory();
+    const location = useLocation();
+    let { from } = location.state || { from: { pathname: "/booking" } };
+
+    initializeLoginFramework();
+
+    const googleSignIn = () => {
+        handleGoogleSignIn()
+        .then(res => {
+          handleResponse(res,true);
+        })
+      }
+
+      const fbSignIn = ()=> {
+        handleFbSignIn()
+        .then(res => {
+          handleResponse(res,true);
+        })
+      }
+
+    
+
+    const handleResponse = (res,redirect) => {
+        setUser(res);
+        setLoggedInUser(res);
+        if(redirect){
+            history.replace(from);
+        }
+    }
+
+    const handleSubmit = (e) => {
+        if( newUser && user.name && user.password){
+          createUserWithEmailAndPassword(user.name, user.email, user.password)
+          .then(res => {
+            handleResponse(res,true);
+          })
+        }
+        if(!newUser && user.email && user.password){
+          signInWithEmailAndPassword(user.email, user.password)
+          .then(res => {
+            handleResponse(res,true);
+          })
+    }
+    e.preventDefault();
+    }
+    
+
+    const handleBlur = (e) => {
+        let isFieldValid = true;
+        if(e.target.name === "email") {
+            isFieldValid = /\S+@\S+\.\S+/.test(e.target.value);
+
+        }
+        if(e.target.name === "password") {
+            const isPasswordValid = e.target.value.length > 6;
+            const passwordHasNumber = /\d{1}/.test(e.target.value);
+            isFieldValid = isPasswordValid && passwordHasNumber;
+        }
+        if(isFieldValid){
+            const newUserInfo = {...user};
+            newUserInfo[e.target.name] = e.target.value;
+            setUser(newUserInfo);
+
+        }
+    };
 
     return (
         <div className="Login">
@@ -14,10 +95,10 @@ const Login = () => {
                 <Header/>
             </div>
             
-            <form className="form">
+            <form onSubmit={handleSubmit} className="form">
                 <h1>Login </h1>
-                <input placeholder="Username or Email"  type="text" id=""/>
-                <input placeholder="Password" type="password" name=""  id=""/>
+                <input onBlur={handleBlur} placeholder="Username or Email"  type="text" id=""/>
+                <input onBlur={handleBlur} placeholder="Password" type="password" name=""  id=""/>
                 <div className="login__options">
                     <div className="login__option">
                         <input type="checkbox" name="" id=""/> <label> Remember Me</label>
@@ -27,19 +108,19 @@ const Login = () => {
                         <label> <Link className="orange"> Forgot Password </Link> </label>
                     </div>
                 </div>
-                <button type="submit"> Login </button>
-                <p className="login__option__forgot"> Don't have an account? <Link to="signup" className="orange"> Create a new account</Link></p>
+                <input className="button" type="submit" onClick={handleSubmit} value="Login" />
+                <p className="login__option__forgot"> Don't have an account? <Link to="/signup" className="orange"> Create a new account</Link></p>
                 
             </form>
 
             <div className="or"> <h3>or</h3> </div>
 
             <div className="another__login_options">
-                <div className="another__login__option">
+                <div onClick={fbSignIn} className="another__login__option">
                     <img src={fbIcon} alt=""/>
                     <p> Continue with Facebook </p>
                 </div>
-                <div className="another__login__option">
+                <div onClick={ googleSignIn} className="another__login__option">
                     <img src={gIcon} alt=""/>
                     <p> Continue with Google </p>
                 </div>

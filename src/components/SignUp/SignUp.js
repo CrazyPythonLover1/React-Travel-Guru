@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import fbIcon from '../../images/Icon/fb.png';
 import gIcon from '../../images/Icon/google.png';
-import { Link } from 'react-router-dom';
+import { Link, useHistory, useLocation } from 'react-router-dom';
 import { initializeLoginFramework, createUserWithEmailAndPassword, signInWithEmailAndPassword,handleGoogleSignIn, handleFbSignIn} from '../Login/loginManager';
+import { UserContext } from '../../App';
 
 const SignUp = () => {
 
@@ -14,6 +15,11 @@ const SignUp = () => {
         password: '',
         photo: '',
     });
+
+    const [loggedInUser, setLoggedInUser] = useContext(UserContext);
+    const history = useHistory();
+    const location = useLocation();
+    let { from } = location.state || { from: { pathname: "/booking" } };
 
     initializeLoginFramework();
 
@@ -35,27 +41,26 @@ const SignUp = () => {
 
     const handleResponse = (res,redirect) => {
         setUser(res);
-        // setLoggedInUser(res);
+        setLoggedInUser(res);
         if(redirect){
-
+            history.replace(from);
         }
     }
 
     const handleSubmit = (e) => {
-        console.log(user);
-        if(newUser && user.name && user.password){
-            createUserWithEmailAndPassword(user.name, user.email, user.password)
-            .then(res =>{
-                handleResponse(res,true);
-            })
+        if( newUser && user.name && user.password){
+          createUserWithEmailAndPassword(user.name, user.email, user.password)
+          .then(res => {
+            handleResponse(res,true);
+          })
         }
         if(!newUser && user.email && user.password){
-            signInWithEmailAndPassword(user.email, user.password)
-            .then(res => {
-                handleResponse(res, true);
-            })
-        }
-        e.preventDefault();
+          signInWithEmailAndPassword(user.email, user.password)
+          .then(res => {
+            handleResponse(res,true);
+          })
+    }
+    e.preventDefault();
     }
     
 
@@ -95,7 +100,7 @@ const SignUp = () => {
 
             </div>
             
-            <form onSubmit={handleSubmit} className="form">
+            <form onSubmit={handleSubmit}  className="form">
                 <h1> Create an account </h1>
                 <input onBlur={handleBlur} placeholder="First Name "       type="text" name="name"  id=""/>
                 <input onBlur={handleBlur} placeholder="Last Name"         type="text" name="lName"  id=""/>
@@ -111,7 +116,7 @@ const SignUp = () => {
                         <label> <Link className="orange"> Forgot Password </Link> </label>
                     </div>
                 </div> */}
-                <input className="button" type="submit" onChange={handleSubmit} value="Create an Account" />
+                <input className="button" type="submit" onClick={handleSubmit} value="Create an Account" />
 
                 <p className="login__option__forgot"> Already have an account? <Link to="login" className="orange"> Login </Link></p>
                  
