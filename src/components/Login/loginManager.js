@@ -73,7 +73,6 @@ export const handleGoogleSignIn  = () => {
     const googleProvider = new firebase.auth.GoogleAuthProvider();
     return firebase.auth().signInWithPopup(googleProvider)
     .then((result) => {
-      var token = result.credential.accessToken;
       var {displayName,email,photoURL} = result.user;
 
       const signedInUser = {
@@ -109,3 +108,21 @@ export const handleGoogleSignIn  = () => {
         console.log(errorMessage);
     });
 };
+
+
+export const handleSignOut = () => {
+    return firebase.auth().signOut()
+    .then(res => {
+      const signedOutUser = {
+        isSignedIn: false,
+        name: '',
+        email: '',
+        photo: '',
+        error: '',
+        success: false
+      }
+      return signedOutUser;
+    }).catch(err => {
+      // An error happened.
+    });
+  }

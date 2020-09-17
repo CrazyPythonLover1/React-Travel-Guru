@@ -104,9 +104,9 @@ const SignUp = () => {
                 <h1> Create an account </h1>
                 <input onBlur={handleBlur} placeholder="First Name "       type="text" name="name"  id=""/>
                 <input onBlur={handleBlur} placeholder="Last Name"         type="text" name="lName"  id=""/>
-                <input onBlur={handleBlur} placeholder="Username or Email" type="text" name="email" id=""/>
-                <input onBlur={handleBlur} placeholder="Password"          type="password" name="password1" id=""/>
-                <input onBlur={handleBlur} placeholder="Confirm Password"  type="password"  name="password"  id=""/>
+                <input onBlur={handleBlur} placeholder="Username or Email" type="text" name="email" required id=""/>
+                <input onBlur={handleBlur} placeholder="Password"          type="password" name="password1" required id=""/>
+                <input onBlur={handleBlur} placeholder="Confirm Password"  type="password"  name="password" required id=""/>
                 {/* <div className="login__options">
                     <div className="login__option">
                         <input type="checkbox" name="" id=""/> <label> Remember Me</label>
@@ -118,9 +118,10 @@ const SignUp = () => {
                 </div> */}
                 <input className="button" type="submit" onClick={handleSubmit} value="Create an Account" />
 
-                <p className="login__option__forgot"> Already have an account? <Link to="login" className="orange"> Login </Link></p>
+                <p className="login__option__forgot"> Already have an account? <Link to="login" onChange={()=>setNewUser(!newUser)} className="orange"> Login </Link></p>
                  
             </form>
+            {user.success && <p style={{color: 'green'}}> User {newUser?'created': "logged In"} successfully </p>}
 
             <div className="or"> <h3>or</h3> </div>
 

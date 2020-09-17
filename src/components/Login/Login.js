@@ -13,7 +13,7 @@ import { UserContext } from '../../App';
 const Login = () => {
 
 
-    const [newUser, setNewUser] = useState(true);
+    const [newUser, setNewUser] = useState(false);
     const [user, setUser] = useState({
         isSignedIn: false,
         name: '',
@@ -109,7 +109,7 @@ const Login = () => {
                     </div>
                 </div>
                 <input className="button" type="submit" onClick={handleSubmit} value="Login" />
-                <p className="login__option__forgot"> Don't have an account? <Link to="/signup" className="orange"> Create a new account</Link></p>
+                <p className="login__option__forgot"> Don't have an account? <Link to="/signup" onChange={()=>setNewUser(!newUser)} className="orange"> Create a new account</Link></p>
                 
             </form>
 
