@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { createContext, useState } from 'react';
 import './App.css';
 import Home from './components/Home/Home';
 
@@ -9,14 +9,22 @@ import {
   Link
 } from "react-router-dom";
 import Login from './components/Login/Login';
+import SignUp from './components/SignUp/SignUp';
+import Book from './components/Book/Book';
+
+export const UserContext = createContext();
 
 function App() {
+  const [loggedInUser, setLoggedInUser] = useState({});
   return (
-    <div className="App">
+      <UserContext.Provider value={[loggedInUser, setLoggedInUser]}> 
       <Router>
         <Switch>
           <Route path="/home">
             <Home/>
+          </Route>
+          <Route path="/booking">
+            <Book/>
           </Route>
           <Route exact path="/">
             <Home/>
@@ -24,10 +32,12 @@ function App() {
           <Route path="/login">
             <Login/>
           </Route>
+          <Route path="/signup">
+            <SignUp/>
+          </Route>
         </Switch>
       </Router>
-      
-    </div>
+      </UserContext.Provider>
   );
 }
 

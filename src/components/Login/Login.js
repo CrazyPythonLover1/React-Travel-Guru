@@ -1,15 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Login.css';
 import Header from '../Header/Header';
 import { Link } from 'react-router-dom';
 import fbIcon from '../../images/Icon/fb.png';
 import gIcon from '../../images/Icon/google.png';
+import { initializeLoginFramework } from './loginManager';
 
 const Login = () => {
+
     return (
         <div className="Login">
             <div className="header">
-                
+                <Header/>
             </div>
             
             <form className="form">
@@ -26,7 +28,7 @@ const Login = () => {
                     </div>
                 </div>
                 <button type="submit"> Login </button>
-                <p className="login__option__forgot"> Don't have an account? <Link className="orange"> Create a new account</Link></p>
+                <p className="login__option__forgot"> Don't have an account? <Link to="signup" className="orange"> Create a new account</Link></p>
                 
             </form>
 

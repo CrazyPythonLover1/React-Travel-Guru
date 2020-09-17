@@ -1,5 +1,6 @@
 import React from 'react';
 import './TripDetail.css';
+import { Link } from 'react-router-dom';
 const TripDtail = ({trip}) => {
     return (
         <div className="trip__option">
@@ -23,7 +24,7 @@ const TripDtail = ({trip}) => {
                             <input className="date" type="date" name="to" id=""/>
                         </div>
                     </div>
-                    <button type="submit"> Start Booking </button>
+                    <button type="submit"> <Link style={{textDecoration: "none",color: "black"}} to="/booking"> Start Booking </Link> </button>
                 </form>
             </div>
         </div>
