@@ -8,7 +8,7 @@ import { Button } from '@material-ui/core';
 
 const Header = () => {
     return (
-        <div class="header">
+        <div className="header">
             <div className="header__left">
                 <img src={logo} alt=""/>
                 <div className="header__input">

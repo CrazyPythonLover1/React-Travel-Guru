@@ -40,7 +40,7 @@ const Login = () => {
         handleResponse(res,true);
     })
     }
-    
+
     const signOut = () => {
     handleSignOut()
     .then(res => {
@@ -49,16 +49,16 @@ const Login = () => {
 }
     
 
-    const handleResponse = (res,redirect) => {
-        setUser(res);
-        setLoggedInUser(res);
-        if(redirect){
-            history.replace(from);
-        }
+   const handleResponse = (res, redirect) =>{
+    setUser(res);
+    setLoggedInUser(res);
+    if(redirect){
+        history.replace(from);
     }
+  }
 
     const handleSubmit = (e) => {
-        if( newUser && user.name && user.password){
+        if( newUser && user.email && user.password){
           createUserWithEmailAndPassword(user.name, user.email, user.password)
           .then(res => {
             handleResponse(res,true);
@@ -91,7 +91,7 @@ const Login = () => {
             setUser(newUserInfo);
 
         }
-    };
+    }
 
     return (
         <div className="Login">
@@ -112,7 +112,7 @@ const Login = () => {
                         <label> <Link className="orange"> Forgot Password </Link> </label>
                     </div>
                 </div>
-                <input className="button" type="submit" onClick={handleSubmit} value="Login" />
+                <input className="button" type="submit"  value="Login" />
                 <p className="login__option__forgot"> Don't have an account? <Link to="/signup" onChange={()=>setNewUser(!newUser)} className="orange"> Create a new account</Link></p>
                 
             </form>

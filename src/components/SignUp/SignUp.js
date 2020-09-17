@@ -49,7 +49,7 @@ const SignUp = () => {
 
     const handleSubmit = (e) => {
         if( newUser && user.name && user.password){
-          createUserWithEmailAndPassword(user.name, user.email, user.password)
+          createUserWithEmailAndPassword( user.name, user.email, user.password)
           .then(res => {
             handleResponse(res,true);
           })
@@ -67,26 +67,16 @@ const SignUp = () => {
 
     const handleBlur = (e) =>{
         let isFieldValid = true;
-        if(e.target.value === 'name'){
-            isFieldValid = true;
-        }
-        if(e.target.name === "email"){
+        if(e.target.name === "email") {
             isFieldValid = /\S+@\S+\.\S+/.test(e.target.value);
-        }
-        let password;
-        if(e.target.name === "password1"){
-            const isPasswordValid = e.target.value.length > 6;
-            const passwordHasNumber = /\d{1}/.test(e.target.value);
-            if(isPasswordValid && passwordHasNumber){
-                password = e.target.value;
-                isFieldValid = false;
-            }
 
         }
-        if(e.target.name === "password" && password){
-            isFieldValid = e.target.value === password;
-             
+        if(e.target.name === "password") {
+            const isPasswordValid = e.target.value.length > 6;
+            const passwordHasNumber = /\d{1}/.test(e.target.value);
+            isFieldValid = isPasswordValid && passwordHasNumber;
         }
+       
         if(isFieldValid){
             const newUserInfo = {...user};
             newUserInfo[e.target.name] = e.target.value;
@@ -116,13 +106,12 @@ const SignUp = () => {
                         <label> <Link className="orange"> Forgot Password </Link> </label>
                     </div>
                 </div> */}
-                <input className="button" type="submit" onClick={handleSubmit} value="Create an Account" />
+                <input className="button" type="submit"  value="Create an Account" />
 
-                <p className="login__option__forgot"> Already have an account? <Link to="login" onChange={()=>setNewUser(!newUser)} className="orange"> Login </Link></p>
+                <p className="login__option__forgot"> Already have an account? <Link to="/login" onChange={()=>setNewUser(!newUser)} className="orange"> Login </Link></p>
                  
             </form>
-            {user.success && <p style={{color: 'green'}}> User {newUser?'created': "logged In"} successfully </p>}
-
+            
             <div className="or"> <h3>or</h3> </div>
 
             <div className="another__login_options">
