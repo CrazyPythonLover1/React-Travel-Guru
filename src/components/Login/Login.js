@@ -129,10 +129,6 @@ const Login = () => {
                     <p> Continue with Google </p>
                 </div>
             </div>
-
-
-            
-
         </div>
     );
 };

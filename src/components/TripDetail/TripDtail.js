@@ -25,7 +25,7 @@ const TripDtail = ({trip}) => {
                         </div>
                     </div>
                     <div className="link__button">
-                    <Link  style={{textDecoration: "none",color: "black"}} to="/booking"> Start Booking </Link>
+                    <Link  style={{color: "black"}} to="/booking"> Start Booking </Link>
                     </div>
                      
                 </form>

@@ -30,3 +30,7 @@
     border: 1px solid lightgray;
     border-radius: 5px;
 }
+
+.map{
+    border-radius: 10px;
+}

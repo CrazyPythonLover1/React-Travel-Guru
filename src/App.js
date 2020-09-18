@@ -13,7 +13,6 @@ import Login from './components/Login/Login';
 import SignUp from './components/SignUp/SignUp';
 import Book from './components/Book/Book';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
-import { WrappedMap } from './components/MapContainer/MapContainer';
 
 
 export const UserContext = createContext();
@@ -44,8 +43,7 @@ function App() {
             <Home/>
           </Route>
         </Switch>
-      </Router>
-      
+      </Router> 
     </UserContext.Provider>
   );
 }

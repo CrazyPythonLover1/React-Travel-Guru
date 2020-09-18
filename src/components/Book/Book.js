@@ -38,14 +38,13 @@ const Book = () => {
                 </div>
 
                 
-            <div style={{width:'40vw',height:'100vh'}}> 
-                <WrappedMap googleMapURL={`https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=${process.env.REACT_APP_GOOGLE_KEY}`} 
-                loadingElement={<div style={{ height: `100%` }} />}
-                containerElement={<div style={{ height: `800px` }} />}
-                mapElement={<div style={{ height: `100%` }} />}
-                />
-            </div>  
-            
+                <div className="map" style={{width:'40vw',height:'100vh'}}> 
+                    <WrappedMap googleMapURL={`https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=${process.env.REACT_APP_GOOGLE_KEY}`} 
+                    loadingElement={<div style={{ height: `100%` }} />}
+                    containerElement={<div style={{ height: `800px` }} />}
+                    mapElement={<div style={{ height: `100%` }} />}
+                    />
+                </div>  
 
             </div>
         </>
