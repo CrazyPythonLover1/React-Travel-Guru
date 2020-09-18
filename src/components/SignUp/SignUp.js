@@ -77,7 +77,8 @@ const SignUp = () => {
           }
         
         if (e.target.name === "email") {
-            isFieldValid = /\S+@\S+\.\S+/.test(e.target.value);
+            isFieldValid = /\S+@\S+\.\S+/.test(e.target.value)?errors["email"]=""
+            :errors["email"] = "Please enter valid email address.";
 
         }
         if (e.target.name === "confirm_password") {
