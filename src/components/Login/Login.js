@@ -20,10 +20,10 @@ const Login = () => {
         photo: '',
     });
 
-    const [loggedInUser, setLoggedInUser] = useContext(UserContext);
+    const [loggedInUser, setLoggedInUser,trip, id, setId] = useContext(UserContext);
     const history = useHistory();
     const location = useLocation();
-    let { from } = location.state || { from: { pathname: "/" } };
+    let { from } = location.state || { from: { pathname: "/booking" } };
 
     initializeLoginFramework();
 
@@ -129,6 +129,9 @@ const Login = () => {
                     <p> Continue with Google </p>
                 </div>
             </div>
+
+
+            
 
         </div>
     );

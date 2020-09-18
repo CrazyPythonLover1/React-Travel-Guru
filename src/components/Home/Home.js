@@ -8,9 +8,6 @@ import Header from '../Header/Header';
 const Home = () => {
     const [loggedInUser, setLoggedInUser,trip, id, setId] = useContext(UserContext);
 
-    console.log(trip);
-    
-    
 
     const [homepage, setHomepage] = useState(true);
     const handleHomepage = ()=>{

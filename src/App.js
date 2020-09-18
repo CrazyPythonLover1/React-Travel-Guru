@@ -13,10 +13,10 @@ import Login from './components/Login/Login';
 import SignUp from './components/SignUp/SignUp';
 import Book from './components/Book/Book';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
+import { WrappedMap } from './components/MapContainer/MapContainer';
 
 
 export const UserContext = createContext();
-
 
 function App() {
 
@@ -31,22 +31,21 @@ function App() {
           <Route path="/home">
             <Home trip={trip} id={id} setId={setId}/>
           </Route>
-         
-          <PrivateRoute path="/booking">
-            <Book/>
-          </PrivateRoute>
           <Route path="/login">
             <Login/>
           </Route>
           <Route path="/signup">
             <SignUp/>
             </Route>
-            
+          <PrivateRoute path="/booking">
+            <Book/>
+          </PrivateRoute>
           <Route exact path="/">
             <Home/>
           </Route>
         </Switch>
       </Router>
+      
     </UserContext.Provider>
   );
 }

@@ -96,6 +96,7 @@ export const handleGoogleSignIn  = () => {
     const fbProvider = new firebase.auth.FacebookAuthProvider();
     return firebase.auth().signInWithPopup(fbProvider)
     .then((result)=>{
+      console.log(result)
         const token = result.credential.accessToken;
         const user = result.user;
         user.success = true;

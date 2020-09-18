@@ -9,19 +9,19 @@ const Header = () => {
     const style = {
         color: 'black',
     }
-    const headerRight={
-        float: 'right',
-    }
-    const headerLogo ={
-    }
     
+   
     return (
         <div  className="header">
-            <div style={headerLogo} className="header__left">
+            <div  className="header__left">
                 <img src={logo} alt=""/>
+                <div className="header__input">
+                    <SearchIcon/>
+                    <input placeholder="Search your Destination..." type="text"/>
+                </div>
                 
             </div>
-            <div style={headerRight} className="header__right">
+            <div className="header__right">
                 <div className="header__option">
                      <Link style={style} className='link' to="/news"> News </Link>
                 </div>

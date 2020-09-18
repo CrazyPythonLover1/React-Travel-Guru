@@ -23,18 +23,19 @@
 
 }
 
-.book__details form > button{
+ .link__button{
     width: 21.3rem;
     height: 2.9rem;
     margin:1rem 0;
-    padding: 1rem 0;
+    padding: 1rem 0 0 0;
     font-weight: bold;
     border: none;
     outline-width: 0;
     border-radius: 5px;
     background: orange;
-}
+    text-align: center;
 
+}
 .date__options{
     display: flex;
 }
