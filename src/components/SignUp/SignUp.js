@@ -94,19 +94,11 @@ const SignUp = () => {
                 <form onSubmit={handleSubmit} className="form">
                     <h1> Create an account </h1>
                     <input onBlur={handleBlur} placeholder="First Name " type="text" name="name" id="" />
-                    <input onBlur={handleBlur} placeholder="Last Name" type="text" name="lName" id="" />
+                    <input placeholder="Last Name" type="text" name="lName" id="" />
                     <input onBlur={handleBlur} placeholder="Username or Email" type="text" name="email" required id="" />
-                    <input onBlur={handleBlur} placeholder="Password" type="password" name="password1" required id="" />
+                    <input placeholder="Password" type="password" name="password1" required id="" />
                     <input onBlur={handleBlur} placeholder="Confirm Password" type="password" name="password" required id="" />
-                    {/* <div className="login__options">
-                    <div className="login__option">
-                        <input type="checkbox" name="" id=""/> <label> Remember Me</label>
-                    </div>
-                    
-                    <div className="login__option__forgot">
-                        <label> <Link className="orange"> Forgot Password </Link> </label>
-                    </div>
-                </div> */}
+                   
                     <input className="button" type="submit" value="Create an Account" />
 
                     <p className="login__option__forgot"> Already have an account? <Link to="/login" onChange={() => setNewUser(!newUser)} className="orange"> Login </Link></p>

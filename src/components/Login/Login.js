@@ -101,8 +101,8 @@ const Login = () => {
             
             <form onSubmit={handleSubmit} className="form">
                 <h1>Login </h1>
-                <input onBlur={handleBlur} placeholder="Username or Email"  type="text" id=""/>
-                <input onBlur={handleBlur} placeholder="Password" type="password" name=""  id=""/>
+                <input onBlur={handleBlur} placeholder="Username or Email" type="text"  name="email" id=""/>
+                <input onBlur={handleBlur} placeholder="Password" type="password"       name="password"  id=""/>
                 <div className="login__options">
                     <div className="login__option">
                         <input type="checkbox" name="" id=""/> <label> Remember Me</label>

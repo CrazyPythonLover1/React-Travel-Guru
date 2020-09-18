@@ -24,9 +24,11 @@ const TripDtail = ({trip}) => {
                             <input className="date" type="date" name="to" id=""/>
                         </div>
                     </div>
+                    <Link  style={{color: "black", textDecoration:"none"}} to="/booking">
                     <div className="link__button">
-                    <Link  style={{color: "black"}} to="/booking"> Start Booking </Link>
+                     Start Booking 
                     </div>
+                    </Link>
                      
                 </form>
             </div>
