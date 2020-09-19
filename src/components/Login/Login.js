@@ -109,7 +109,7 @@ const Login = () => {
                     </div>
                     
                     <div className="login__option__forgot">
-                        <label> <Link className="orange"> Forgot Password </Link> </label>
+                        <label> <Link className="orange" to=""> Forgot Password </Link> </label>
                     </div>
                 </div>
                 <input className="button" type="submit"  value="Login" />

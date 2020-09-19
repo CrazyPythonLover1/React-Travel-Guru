@@ -66,40 +66,45 @@ const SignUp = () => {
 
     
     const [ errors, setErrors] = useState({});
-    
-    let confirm_password;
+    const [success, setSuccess] = useState({});
+    const [initialPassword, setInitialPassword] = useState(' ');
     const handleBlur = (e) => {
         let isFieldValid = true;
-
-        if (e.target.value === "") {
-            isFieldValid = false;
-            errors[e.target.name] = `Please enter your ${e.target.name}`;
-          }
         
         if (e.target.name === "email") {
-            isFieldValid = /\S+@\S+\.\S+/.test(e.target.value)?errors["email"]=""
+            isFieldValid = /\S+@\S+\.\S+/.test(e.target.value)
+            ?errors["email"]=""
             :errors["email"] = "Please enter valid email address.";
-
         }
-        if (e.target.name === "confirm_password") {
+        
+        if (e.target.name === "initial_password") {
             const isPasswordValid = e.target.value.length > 6;
             const passwordHasNumber = /\d{1}/.test(e.target.value);
-            isPasswordValid && passwordHasNumber? confirm_password = e.target.value
-            :errors["confirm_password"] = " password should have a number"
-        }
-        if (e.target.name === "password") {
-            if(confirm_password === e.target.value){
-                isFieldValid = true;
+            if(isPasswordValid && passwordHasNumber){
+                setInitialPassword(e.target.value);
+                success["initial_password"] = 'Password have a number & characters';
+                errors["initial_password"] = "";
             }
             else{
-                errors["password"] = "password doesn't match! Try again"
+                errors["initial_password"] = " Password should have a number & 6 characters";
+                success["initial_password"] = '';
+            }
+        }
+        let password;
+        if (e.target.name === "password") {
+            password = e.target.value;
+            if(JSON.stringify(password)===JSON.stringify(initialPassword)){
+                isFieldValid= true;
+                success["password"] = 'Password matched';
+                errors["password"] = "";
+            }
+            else{
+                errors["password"] = "Password doesn't match! Please ry again";
+                success["password"] = '';
             }
             
         }
         
-
-          
-
         if (isFieldValid) {
             const newUserInfo = { ...user };
             newUserInfo[e.target.name] = e.target.value;
@@ -108,7 +113,7 @@ const SignUp = () => {
     }
     return (
         <div>
-            <div className="Login">
+            <div className="Login" style={{marginBottom: "4rem"}}>
             <CommonHeader />
 
                 <form onSubmit={handleSubmit} className="form">
@@ -121,10 +126,12 @@ const SignUp = () => {
                     <input onBlur={handleBlur} placeholder="Username or Email" type="text" name="email" required id="" />
                         <p style={{color: 'red'}}> {errors.email} </p>
                     
-                    <input onBlur={handleBlur} placeholder="Password" type="password"   name="confirm_password" required id="" />
-                        <p style={{color: 'red'}}> {errors.confirm_password} </p>
+                    <input onBlur={handleBlur} placeholder="Password" type="password"   name="initial_password" required id="" />
+                        <p style={{color: 'green'}}> {success.initial_password} </p>
+                        <p style={{color: 'red'}}> {errors.initial_password} </p>
                     
                     <input onBlur={handleBlur} placeholder="Confirm Password" type="password" name="password" required id="" />
+                        <p style={{color: 'green'}}> {success.password} </p>
                         <p style={{color: 'red'}}> {errors.password} </p>
 
                     <input className="button" type="submit" value="Create an Account" />
