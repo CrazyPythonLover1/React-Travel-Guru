@@ -18,6 +18,9 @@ const Header = () => {
             </div>
             <div className="header__right">
                 <div className="header__option">
+                     <Link className='link' to="/home"> Home </Link>
+                </div>
+                <div className="header__option">
                      <Link className='link' to="/news"> News </Link>
                 </div>
                 <div className="header__option">

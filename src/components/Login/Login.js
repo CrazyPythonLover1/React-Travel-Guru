@@ -95,9 +95,9 @@ const Login = () => {
 
     return (
         <div className="Login">
-            <div className="header">
+            
                 <CommonHeader/>
-            </div>
+            
             
             <form onSubmit={handleSubmit} className="form">
                 <h1>Login </h1>

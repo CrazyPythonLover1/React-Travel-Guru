@@ -64,19 +64,40 @@ const SignUp = () => {
         e.preventDefault();
     }
 
-
-
+    
+    const [ errors, setErrors] = useState({});
+    
+    let confirm_password;
     const handleBlur = (e) => {
         let isFieldValid = true;
+
+        if (e.target.value === "") {
+            isFieldValid = false;
+            errors[e.target.name] = `Please enter your ${e.target.name}`;
+          }
+        
         if (e.target.name === "email") {
             isFieldValid = /\S+@\S+\.\S+/.test(e.target.value);
 
         }
-        if (e.target.name === "password") {
+        if (e.target.name === "confirm_password") {
             const isPasswordValid = e.target.value.length > 6;
             const passwordHasNumber = /\d{1}/.test(e.target.value);
-            isFieldValid = isPasswordValid && passwordHasNumber;
+            isPasswordValid && passwordHasNumber? confirm_password = e.target.value
+            :errors["confirm_password"] = " password should have a number"
         }
+        if (e.target.name === "password") {
+            if(confirm_password === e.target.value){
+                isFieldValid = true;
+            }
+            else{
+                errors["password"] = "password doesn't match! Try again"
+            }
+            
+        }
+        
+
+          
 
         if (isFieldValid) {
             const newUserInfo = { ...user };
@@ -87,18 +108,24 @@ const SignUp = () => {
     return (
         <div>
             <div className="Login">
-                <div className="header">
-                    <CommonHeader />
-                </div>
+            <CommonHeader />
 
                 <form onSubmit={handleSubmit} className="form">
                     <h1> Create an account </h1>
                     <input onBlur={handleBlur} placeholder="First Name " type="text" name="name" id="" />
+                        <p style={{color: 'red'}}> {errors.name} </p>
+                    
                     <input placeholder="Last Name" type="text" name="lName" id="" />
+        
                     <input onBlur={handleBlur} placeholder="Username or Email" type="text" name="email" required id="" />
-                    <input placeholder="Password" type="password" name="password1" required id="" />
+                        <p style={{color: 'red'}}> {errors.email} </p>
+                    
+                    <input onBlur={handleBlur} placeholder="Password" type="password"   name="confirm_password" required id="" />
+                        <p style={{color: 'red'}}> {errors.confirm_password} </p>
+                    
                     <input onBlur={handleBlur} placeholder="Confirm Password" type="password" name="password" required id="" />
-                   
+                        <p style={{color: 'red'}}> {errors.password} </p>
+
                     <input className="button" type="submit" value="Create an Account" />
 
                     <p className="login__option__forgot"> Already have an account? <Link to="/login" onChange={() => setNewUser(!newUser)} className="orange"> Login </Link></p>
